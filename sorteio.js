@@ -1,3 +1,9 @@
+function ganhou() {
+    alert("Parabéns! Você ganhou! entre em contato conosco para receber seu prêmio.");
+    // Redireciona para a página de contato
+    window.location.href = "contato.html";
+}
+
 function virar(element) {
     const container = element.parentElement;
 
@@ -60,6 +66,7 @@ function virar(element) {
 
             // Envia os dados para a planilha após o sorteio
             enviarDadosParaPlanilha();
+            ganhou();
         });
     }, 300); // Tempo correspondente à transição CSS
 }
