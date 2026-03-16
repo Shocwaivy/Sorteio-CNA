@@ -8,7 +8,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     min-height: 100vh;
-    background: radial-gradient(rgb(56, 210, 215), rgb(239, 164, 34), rgb(144, 87, 1));
+    background: radial-gradient(rgb(231, 22, 22), rgb(122, 24, 27), rgb(33, 20, 2));
     flex-direction: column;
     padding-top: 20px;
 }

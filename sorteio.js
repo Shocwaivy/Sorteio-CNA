@@ -33,7 +33,9 @@ function virar(element) {
             'images/win (5).png',
             'images/win (6).png',
         ];
-        const randomSrc = encodeURI(winImages[Math.floor(Math.random() * winImages.length)]);
+        const indexSorteado = Math.floor(Math.random() * winImages.length);
+        const randomSrc = encodeURI(winImages[indexSorteado]);
+        const numeroSorteado = indexSorteado + 1; // Números de 1 a 6, correspondendo à win sorteada
 
         const imagemWin = document.createElement('img');
         imagemWin.src = randomSrc;
@@ -48,6 +50,44 @@ function virar(element) {
         // Força repaint para garantir que a imagem apareça imediatamente
         requestAnimationFrame(() => {
             imagemWin.style.opacity = '1';
+            
+            // Exibe o número sorteado
+            document.getElementById('numeroSorteado').textContent = numeroSorteado;
+            document.getElementById('resultado').style.display = 'block';
+
+            // Armazena o número em localStorage para consulta posterior
+            localStorage.setItem('ultimoNumeroSorteado', numeroSorteado);
+
+            // Envia os dados para a planilha após o sorteio
+            enviarDadosParaPlanilha();
         });
     }, 300); // Tempo correspondente à transição CSS
 }
+
+function enviarDadosParaPlanilha() {
+    const cpf = localStorage.getItem('cpfParticipante');
+    const nome = localStorage.getItem('nomeParticipante');
+    const telefone = localStorage.getItem('telefoneParticipante');
+    const numeroSorteado = localStorage.getItem('ultimoNumeroSorteado');
+
+    if (cpf && nome && telefone && numeroSorteado) {
+        fetch("https://script.google.com/macros/s/AKfycby56no-V6pFBszB1AYp3MmTXmLD2ty0O5WewW-bxtZhWd___h_WOIdsuxjscWUeoKs4ng/exec", {
+            method: "POST",
+            body: JSON.stringify({
+                cpf: cpf,
+                nome: nome,
+                telefone: telefone,
+                item: numeroSorteado
+            })
+        }).then(response => {
+            if (response.ok) {
+                console.log('Dados enviados com sucesso!');
+            } else {
+                console.error('Erro ao enviar dados');
+            }
+        }).catch(error => {
+            console.error('Erro na requisição:', error);
+        });
+    }
+}
+
