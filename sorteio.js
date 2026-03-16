@@ -1,7 +1,9 @@
 function ganhou() {
-    alert("Parabéns! Você ganhou! entre em contato conosco para receber seu prêmio.");
-    // Redireciona para a página de contato
-    window.location.href = "contato.html";
+    setTimeout(() => {
+        alert("Parabéns! Você ganhou! entre em contato conosco para receber seu prêmio.");
+        // Redireciona para a página de contato
+        window.location.href = "contato.html";
+    }, 3000); // 5 segundos de delay
 }
 
 function virar(element) {
