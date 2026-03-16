@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SORTEIO!</title>
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="conteudo">
+        <h1>SORTEIO!</h1>
+        <p>Bem-vindo ao sorteio!</p>
+        <p>insira seu CPF para participar</p>
+        <input type="text" id="cpf" placeholder="Digite seu CPF">
+        <button onclick="participar()">Participar</button>
+    </div>
+</body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDXezW_w3zQAVZai19Macupmu1hgi-LxUw",
+    authDomain: "sorteio-cna.firebaseapp.com",
+    projectId: "sorteio-cna",
+    storageBucket: "sorteio-cna.firebasestorage.app",
+    messagingSenderId: "775385949369",
+    appId: "1:775385949369:web:b0839126cc28a546636768",
+    measurementId: "G-0NMVLS3XSH"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+</html>

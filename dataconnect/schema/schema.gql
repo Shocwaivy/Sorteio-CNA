@@ -1,0 +1,32 @@
+type User @table {
+  displayName: String!
+  createdAt: Timestamp!
+  email: String
+  photoUrl: String
+  isOrganizer: Boolean
+}
+
+type Giveaway @table {
+  title: String!
+  prize: String!
+  description: String!
+  entryStartDate: Timestamp!
+  entryEndDate: Timestamp!
+  createdAt: Timestamp!
+  imageUrl: String
+  winnerAnnouncedDate: Timestamp
+  organizer: User
+}
+
+type Entry @table {
+  createdAt: Timestamp!
+  user: User
+  giveaway: Giveaway
+}
+
+type Winner @table {
+  winningDate: Timestamp!
+  claimedDate: Timestamp
+  user: User
+  giveaway: Giveaway
+}

@@ -1,0 +1,17 @@
+query ActiveGiveaways @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public as it only retrieves public giveaway information.") {
+  giveaways(where: {
+    entryStartDate: {le_expr: "request.time"},
+    entryEndDate: {ge_expr: "request.time"}
+  }) {
+    id
+    title
+    description
+    prize
+    imageUrl
+    entryStartDate
+    entryEndDate
+    organizer {
+      displayName
+    }
+  }
+}

@@ -1,0 +1,61 @@
+mutation CreateDemoData @transaction @auth(level: USER, insecureReason: "Seed data mutation for development purposes.") {
+  user_insertMany(data: [
+    {
+      id: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      displayName: "Alice Smith",
+      email: "alice@example.com",
+      photoUrl: "https://example.com/alice.jpg",
+      isOrganizer: true,
+      createdAt: "2023-01-01T10:00:00Z"
+    },
+    {
+      id: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22",
+      displayName: "Bob Johnson",
+      email: "bob@example.com",
+      photoUrl: "https://example.com/bob.jpg",
+      isOrganizer: false,
+      createdAt: "2023-01-02T11:00:00Z"
+    }
+  ])
+  giveaway_insertMany(data: [
+    {
+      id: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a33",
+      title: "Holiday Raffle",
+      prize: "Vacation Package",
+      description: "Win a luxurious vacation to a tropical paradise!",
+      entryStartDate: "2023-11-01T00:00:00Z",
+      entryEndDate: "2023-12-15T23:59:59Z",
+      createdAt: "2023-10-20T09:00:00Z",
+      imageUrl: "https://example.com/vacation.jpg",
+      organizer: {id: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"}
+    },
+    {
+      id: "d0eebc99-9c0b-4ef8-bb6d-6bb9bd380a44",
+      title: "Tech Gadget Giveaway",
+      prize: "Latest Smartphone",
+      description: "Get a chance to win the newest smartphone model!",
+      entryStartDate: "2023-10-25T00:00:00Z",
+      entryEndDate: "2023-11-20T23:59:59Z",
+      createdAt: "2023-10-15T14:30:00Z",
+      imageUrl: "https://example.com/smartphone.jpg",
+      organizer: {id: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"}
+    }
+  ])
+  entry_insertMany(data: [
+    {
+      id: "e0eebc99-9c0b-4ef8-bb6d-6bb9bd380a55",
+      user: {id: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22"},
+      giveaway: {id: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a33"},
+      createdAt: "2023-11-05T18:00:00Z"
+    }
+  ])
+  winner_insertMany(data: [
+    {
+      id: "f0eebc99-9c0b-4ef8-bb6d-6bb9bd380a66",
+      user: {id: "b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22"},
+      giveaway: {id: "c0eebc99-9c0b-4ef8-bb6d-6bb9bd380a33"},
+      winningDate: "2023-12-16T10:00:00Z",
+      claimedDate: "2023-12-20T11:00:00Z"
+    }
+  ])
+}

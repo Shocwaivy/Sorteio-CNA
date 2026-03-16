@@ -1,0 +1,73 @@
+html{
+    height: max;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background: radial-gradient(rgb(56, 210, 215), rgb(239, 164, 34), rgb(144, 87, 1));
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.imagens{
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    height: 100px;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+    margin: 50px;
+}
+
+.sorteio {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+}
+.cartas{
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.carta-container {
+    position: relative;
+    cursor: pointer;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.carta-container img {
+    transition: opacity 0.3s ease-out;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carta-container.virado img {
+    opacity: 0;
+}
+
+.carta-virada {
+    transition: opacity 0.3s ease-in;
+}
