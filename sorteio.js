@@ -1,9 +1,18 @@
 function ganhou() {
     setTimeout(() => {
-        alert("Parabéns! Você ganhou! entre em contato conosco para receber seu prêmio.");
         // Redireciona para a página de contato
         window.location.href = "contato.html";
-    }, 3000); // 5 segundos de delay
+    }, 3000); // 3 segundos de delay
+}
+
+function escurecerCartasNaoEscolhidas() {
+    // Escurece todas as cartas exceto a que foi virada
+    document.querySelectorAll('.carta-container').forEach(carta => {
+        if (!carta.classList.contains('virado')) {
+            carta.style.opacity = '0.3';
+            carta.style.filter = 'grayscale(100%)';
+        }
+    });
 }
 
 function virar(element) {
@@ -63,8 +72,12 @@ function virar(element) {
             document.getElementById('numeroSorteado').textContent = numeroSorteado;
             document.getElementById('resultado').style.display = 'block';
 
-            // Armazena o número em localStorage para consulta posterior
+            // Armazena o número e a imagem em localStorage para consulta posterior
             localStorage.setItem('ultimoNumeroSorteado', numeroSorteado);
+            localStorage.setItem('cartaEscolhida', randomSrc);
+
+            // Escurece as outras cartas
+            escurecerCartasNaoEscolhidas();
 
             // Envia os dados para a planilha após o sorteio
             enviarDadosParaPlanilha();

@@ -7,8 +7,15 @@ body{
     text-align: center;
 }
 .whats{
-    width: 400px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     margin-top: 20px;
     background-color: rgb(255, 255, 255);
+    border-radius: 91%;
+    border-color: rgb(255, 0, 0);
 }
+
+.logozap{
+    width: 50px;
+    height: 50px;
+}   

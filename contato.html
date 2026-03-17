@@ -9,10 +9,31 @@
 </head>
 <body>
     <h1>CNA Campos Salles</h1>
-    <p>Entre em contato conosco para mais informações.</p>
-    <button class="whats" onclick="window.open('https://wa.me/551621117755', '_blank')">WhatsApp</button>
+    <p>Envie um print do seu prêmio para nós.</p>
+    <button class="whats" onclick="window.open('https://wa.me/551621117755', '_blank')"><img class="logozap" src="/images/whatsapp_logo_icon_186881.webp" alt=""></button>
+    <div class="premioGanho">
+        <h2>Prêmio Ganho</h2>
+        <img id="imagemPremio" src="" alt="Prêmio ganho" style="max-width: 300px; margin-top: 1px;">
+    </div>
     <h2>Informações de Contato</h2>
     <p><strong>Endereço:</strong> Rua Campos Salles, 730 - Centro, Ribeirão Preto, São Paulo</p>
     <p><strong>Telefone:</strong> (16)2111-7755</p>
+    
+
+    <script>
+        // Recupera a imagem da carta escolhida do localStorage
+        window.addEventListener('DOMContentLoaded', () => {
+            const cartaEscolhida = localStorage.getItem('cartaEscolhida');
+            const numeroSorteado = localStorage.getItem('ultimoNumeroSorteado');
+            
+            if (cartaEscolhida) {
+                document.getElementById('imagemPremio').src = cartaEscolhida;
+            }
+            
+            if (numeroSorteado) {
+                console.log('Número ganho:', numeroSorteado);
+            }
+        });
+    </script>
 </body>
 </html>
